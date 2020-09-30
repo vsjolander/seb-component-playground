@@ -1,0 +1,127 @@
+@import "~@sebgroup/bootstrap";
+@import "~@sebgroup/vanilla/src/variables";
+@import "~@sebgroup/vanilla/src/components/tables/table";
+
+@import "~@sebgroup/vanilla/src/components/inputs/input-mixins";
+
+.sdv-field-switch-wrap {
+  @include vanilla-field-toggle-wrap("switch");
+}
+
+.sdv-field-switch-wrap--suggestion {
+  @include vanilla-field-toggle-wrap("switch");
+
+  position: relative;
+  padding-left: vanilla-px-to-em(40px);
+  min-height: 2rem;
+
+  input:checked + label::before {
+    background-color: $vanilla-color-component-normal;
+    border-color: $vanilla-color-component-normal;
+  }
+
+  input + label {
+    position: initial;
+    line-height: 2rem;
+    margin-bottom: 0 !important;
+    padding: 0; 
+
+    &:not(:empty) {
+        padding: 0 0 0 8px;
+    }
+  }
+
+  input + label:before {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: none;
+  }
+
+  input + label:after {
+    width: vanilla-px-to-em(16px);
+    height: vanilla-px-to-em(16px);
+    left: 2px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15),
+                0px 1px 0px 0px rgba(0, 0, 0, 0.06);
+    
+  }
+
+  input:focus + label {
+    box-shadow: none;
+  }
+
+  input:focus + label:before {
+    box-shadow: 0px 0px 0px 2px $vanilla-color-white,
+                0px 0px 0px 4px $vanilla-color-darkblue2;
+  }
+
+  &:hover input:not(:disabled) + label::after {
+    background-color: $vanilla-color-white;
+  }
+
+  &:hover input:not(:disabled):not(:focus):not(:active) {
+    & + label::after {
+      left: vanilla-px-to-em(6px);
+    }
+
+    & + label::before {
+      background-color: $vanilla-color-grey5;
+    }
+  }
+
+  &:hover input:checked:not(:disabled):not(:focus):not(:active)  {
+    & + label::after {
+        left: vanilla-px-to-em(19px);
+    }
+
+    & + label::before {
+    background-color: $vanilla-color-darkblue2;
+    }
+  }
+
+  &:hover, label:hover {
+    cursor: pointer;
+  }
+
+  input:checked + label::after {
+    left: vanilla-px-to-em(22px);
+  }
+
+  input:not(:disabled):focus + label::after {
+    background-color: $vanilla-color-white;
+  }
+
+
+
+  &.v2 {
+    input:focus + label:before {
+        box-shadow: 0px 0px 4px 1px $vanilla-color-blue;
+        border: 1px solid $vanilla-color-component-selected;
+    }
+
+    &:hover input:not(:disabled):not(:focus):not(:active) {
+        & + label::after {
+          left: vanilla-px-to-em(2px);
+        }
+    
+        & + label::before {
+          background-color: $vanilla-color-grey5;
+        }
+      }
+    
+      &:hover input:checked:not(:disabled):not(:focus):not(:active)  {
+        & + label::after {
+            left: vanilla-px-to-em(22px);
+        }
+    
+        & + label::before {
+        background-color: $vanilla-color-darkblue2;
+        }
+      }
+  }
+}
