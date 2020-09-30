@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.52fae709.chunk.css",
-    "main.js": "/static/js/main.bdc1777a.chunk.js",
-    "main.js.map": "/static/js/main.bdc1777a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.78f77337.js",
-    "runtime-main.js.map": "/static/js/runtime-main.78f77337.js.map",
-    "static/js/2.b93d2afd.chunk.js": "/static/js/2.b93d2afd.chunk.js",
-    "static/js/2.b93d2afd.chunk.js.map": "/static/js/2.b93d2afd.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.28ab9bf3db8d8e3b9cf53ecffdaaceba.js": "/precache-manifest.28ab9bf3db8d8e3b9cf53ecffdaaceba.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.52fae709.chunk.css.map": "/static/css/main.52fae709.chunk.css.map",
-    "static/js/2.b93d2afd.chunk.js.LICENSE.txt": "/static/js/2.b93d2afd.chunk.js.LICENSE.txt",
-    "static/media/App.scss": "/static/media/SEBSansSerif-RegularItalic.cb8e1d8d.woff2",
-    "static/media/logo.svg": "/static/media/logo.c4f961dd.svg"
+    "main.css": "/seb-component-playground/static/css/main.0e02c011.chunk.css",
+    "main.js": "/seb-component-playground/static/js/main.bdc1777a.chunk.js",
+    "main.js.map": "/seb-component-playground/static/js/main.bdc1777a.chunk.js.map",
+    "runtime-main.js": "/seb-component-playground/static/js/runtime-main.71c521a7.js",
+    "runtime-main.js.map": "/seb-component-playground/static/js/runtime-main.71c521a7.js.map",
+    "static/js/2.b93d2afd.chunk.js": "/seb-component-playground/static/js/2.b93d2afd.chunk.js",
+    "static/js/2.b93d2afd.chunk.js.map": "/seb-component-playground/static/js/2.b93d2afd.chunk.js.map",
+    "index.html": "/seb-component-playground/index.html",
+    "precache-manifest.38c8f73968cf947d034c76c650afd08a.js": "/seb-component-playground/precache-manifest.38c8f73968cf947d034c76c650afd08a.js",
+    "service-worker.js": "/seb-component-playground/service-worker.js",
+    "static/css/main.0e02c011.chunk.css.map": "/seb-component-playground/static/css/main.0e02c011.chunk.css.map",
+    "static/js/2.b93d2afd.chunk.js.LICENSE.txt": "/seb-component-playground/static/js/2.b93d2afd.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/seb-component-playground/static/media/SEBSansSerif-RegularItalic.cb8e1d8d.woff2",
+    "static/media/logo.svg": "/seb-component-playground/static/media/logo.c4f961dd.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.78f77337.js",
+    "static/js/runtime-main.71c521a7.js",
     "static/js/2.b93d2afd.chunk.js",
-    "static/css/main.52fae709.chunk.css",
+    "static/css/main.0e02c011.chunk.css",
     "static/js/main.bdc1777a.chunk.js"
   ]
 }
