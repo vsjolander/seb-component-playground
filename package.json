@@ -2,7 +2,7 @@
   "name": "seb-component-playground",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vsjolander.github.com/seb-component-playground",
+  "homepage": "https://vsjolander.github.io/seb-component-playground",
   "dependencies": {
     "@sebgroup/bootstrap": "^5.3.0",
     "@sebgroup/vanilla": "^4.12.1",
