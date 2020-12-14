@@ -1,0 +1,7 @@
+import React from 'react';
+
+export const IconClose = (props) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width={props.width ? `${props.width}px` : '24px'} height={props.height ? `${props.height}px` : '24px'}><path fill={props.fill} d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"/></svg>;
+
+export const IconLeft = (props) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" width={props.width ? `${props.width}px` : '24px'} height={props.height ? `${props.height}px` : '24px'}><path fill={props.fill} d="M25.1 247.5l117.8-116c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L64.7 256l102.2 100.4c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.7-12.3 4.7-17 0L25 264.5c-4.6-4.7-4.6-12.3.1-17z"/></svg>;
+
+export const IconRight = (props) => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" width={props.width ? `${props.width}px` : '24px'} height={props.height ? `${props.height}px` : '24px'}><path fill={props.fill} d="M166.9 264.5l-117.8 116c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17L127.3 256 25.1 155.6c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0l117.8 116c4.6 4.7 4.6 12.3-.1 17z"/></svg>;

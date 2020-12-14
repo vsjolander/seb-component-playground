@@ -1,13 +1,15 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import logo from "./logo.svg";
+import {ThemeProvider} from 'styled-components'
+import theme from './theme'
 import "./App.scss";
 import SideNav from './SideNav'
 import ViewSlideToggle from './SlideToggle'
-import ViewDatePicker from './DatePicker'
+import ViewDatePicker from './components/DatePicker'
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
       <Router>
         <SideNav>
         <Switch>
@@ -20,6 +22,7 @@ function App() {
         </Switch>
         </SideNav>
       </Router>
+      </ThemeProvider> 
   );
 }
 

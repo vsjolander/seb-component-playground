@@ -8,11 +8,16 @@ const SideNavContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    width: 300px;
+    width: ${props => props.theme.desktop.sideNavWith}px;
     height: 100%;
     background: #000;
     display: flex;
     flex-direction: column;
+    transform: translate(-100%);
+
+    @media screen and (min-width: 720px) {
+        transform: translate(0%);
+    }
 `;
 
 const SideNavHeader = styled.div`
@@ -55,8 +60,10 @@ const SideNavLink = styled(NavLink)`
 `;
 
 const SideNavWrapper = styled.div`
-    margin-left: 300px;
     width: 100%;
+    @media screen and (min-width: 720px) {
+        padding-left: ${props => props.theme.desktop.sideNavWith}px;
+    }
 `
 
 const routes = {

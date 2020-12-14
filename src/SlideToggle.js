@@ -1,10 +1,125 @@
-import * as React from 'react';
+import React, {useState} from 'react';
+import styled from 'styled-components';
+
+const SlideToggleWrapper = styled.div`
+  border: 0.0625rem solid #cecece;
+  border-radius: 0.25rem;
+  outline: none;
+  box-sizing: border-box;
+  min-height: 2.75rem;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-family: "SEBSansSerif", Arial, sans-serif;
+  display: inline-block;
+  border-color: transparent;
+  height: auto;
+  position: relative;
+  padding-left: 2.75rem;
+  min-height: 2rem;
+  
+  &, & > * {
+    cursor: pointer;
+  }
+
+  &:hover input {
+    & + label::after {
+      left: ${props => props.isOn ? '1.125' : '.375'}rem;
+    }
+
+    & + label::before {
+      background-color: ${props => props.isOn ? props.theme.colors.darkgreen2 : props.theme.colors.grey[500]};
+    }
+  }
+`
+const SlideToggleSwitch = styled.input`
+  -webkit-appearance: none;
+  appearance: none;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+
+  &:focus + label:before {
+    box-shadow: 0px 0px 4px 1px ${props => props.theme.colors.blue};
+    border: 1px solid ${props => props.theme.colors.darkblue2};
+  }
+`;
+
+const SlideToggleLabel = styled.label`
+  display: inline-block;
+  border-radius: 0.25rem;
+  position: relative;
+  min-height: 2rem;
+  padding-left: 0.5rem;
+  position: initial;
+  line-height: 2rem;
+
+  &::before {
+    background-color: ${props => props.isOn ? props.theme.colors.darkgreen1 : props.theme.colors.grey[400]};
+    display: block;
+    content: '';
+    margin: 0 0.5rem -0.125rem 0;
+    position: absolute;
+    visibility: visible;
+    outline: none;
+    font-size: 1rem;
+    border: 0.0625rem solid #adadad;
+    transition: 250ms;
+    width: 2.5rem;
+    height: 1.25rem;
+    border-radius: 1.25rem;
+    top: 0.625rem;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: none;
+    height: 1.5rem;
+    width: 2.75rem;
+  }
+
+  &:after {
+    background-color: #fff;
+    border-radius: 50%;
+    border: 0.1875rem solid #fff;
+    bottom: 0;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15), 0px 1px 0px 0px rgba(0, 0, 0, 0.06);
+    content: '';
+    display: block;
+    height: 1.25rem;
+    left: ${props => props.isOn ? '1.375' : '0.125'}rem;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    transition: 150ms ease-in-out;
+    width: 1.25rem;
+  }
+
+`;
+
+const SlideToggle = ({initialState = false, ariaLabel = '', key=''}) => {
+
+  const [isOn, setIsOn] = useState(initialState);
+  
+  const toggleIsOn = () => {
+    setIsOn(state => !state);
+  }
+
+  return (
+    <SlideToggleWrapper isOn={isOn} key={key} onClick={(e) => {
+      e.preventDefault();
+      toggleIsOn()
+    }} >
+      <SlideToggleSwitch isOn={isOn} type="checkbox" aria-label={ariaLabel} />
+      <SlideToggleLabel isOn={isOn} className="custom-control-label form-check-label">{isOn ? 'On' : 'Off'}</SlideToggleLabel> 
+    </SlideToggleWrapper>
+  )
+}
 
 const ViewSlideToggle = () => (
-    <div className="container">
-        <div className="row mt-5">
+    <div className="container-fluid">
+        <div className="row">
           <div className="col-12">
-            <h1>Slide Toggle</h1>
+            <h1 className="mt-5">Slide Toggle</h1>
           </div>
         </div>
         <div className="row mt-5">
@@ -12,211 +127,16 @@ const ViewSlideToggle = () => (
             <div className="card">
               <div className="card-header">
                 <h3>
-                  <span role="img">🍦</span> Current Vanilla
-                </h3>
-              </div>
-              <div className="card-body">
-                <div className="form-group">
-                  <div className="sdv-field-switch-wrap">
-                    <input
-                      type="checkbox"
-                      aria-label="Field label"
-                      id="sdv-cb1"
-                    />
-                    <label htmlFor="sdv-cb1">Field label</label>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="sdv-field-switch-wrap">
-                    <input type="checkbox" aria-label="" id="sdv-cb2" />
-                    <label htmlFor="sdv-cb2"> </label>
-                  </div>
-                </div>
-                <table className="sdv-table">
-                  <thead>
-                    <tr>
-                      <th className="sdv-table__primary-col">E-mail setting</th>
-                      <th className="sdv-table__numeric-col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Send me critical e-mails regarding my accounts</td>
-                      <td className="sdv-table__numeric-col">
-                        <div className="sdv-field-switch-wrap">
-                          <input type="checkbox" aria-label="" id="sdv-cb5" />
-                          <label htmlFor="sdv-cb5"> </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Send me e-mail regarding new SEB products and services
-                      </td>
-                      <td className="sdv-table__numeric-col">
-                        <div className="sdv-field-switch-wrap">
-                          <input type="checkbox" aria-label="" id="sdv-cb6" />
-                          <label htmlFor="sdv-cb6"></label>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row mt-5">
-          <div className="col-12">
-            <div className="card">
-              <div className="card-header">
-                <h3>
-                  <span role="img">🥾</span> Current Bootstrap
-                </h3>
-              </div>
-              <div className="card-body">
-                <div className="form-group">
-                  <div className="custom-control custom-slide-toggle">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="customCheck478623"
-                    />
-                    <label className="custom-control-label" htmlFor="customCheck478623">
-                      Field label
-                    </label>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="custom-control custom-slide-toggle">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="customCheck456789"
-                    />
-                    <label className="custom-control-label" htmlFor="customCheck456789">
-                      {" "}
-                    </label>
-                  </div>
-                </div>
-                <table className="sdv-table">
-                  <thead>
-                    <tr>
-                      <th className="sdv-table__primary-col">E-mail setting</th>
-                      <th className="sdv-table__numeric-col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Send me critical e-mails regarding my accounts</td>
-                      <td className="sdv-table__numeric-col">
-                        <div className="custom-control custom-slide-toggle">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck12345455"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="customCheck12345455"
-                          ></label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Send me e-mail regarding new SEB products and services
-                      </td>
-                      <td className="sdv-table__numeric-col">
-                        <div className="custom-control custom-slide-toggle">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck12345"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="customCheck12345"
-                          ></label>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row mt-5">
-          <div className="col-12">
-            <div className="card">
-              <div className="card-header">
-                <h3>
-                  <span role="img">🔍</span> Discovery
+                  Default
                 </h3>
               </div>
               <div className="card-body">
                 <form action="">
                   <div className="form-group">
-                    <div className="sdv-field-switch-wrap--suggestion v3 v3--green">
-                      <input
-                        type="checkbox"
-                        aria-label="Field label"
-                        id="sdv-FGHDJSALK"
-                      />
-                      <label htmlFor="sdv-FGHDJSALK">Green</label>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="sdv-field-switch-wrap--suggestion v3 v3--black">
-                      <input
-                        type="checkbox"
-                        aria-label=""
-                        id="sdv-4F56DA4"
-                      />
-                      <label htmlFor="sdv-4F56DA4">Black</label>
-                    </div>
+                    <SlideToggle />
                   </div>
                 </form>
-                <table className="sdv-table">
-                  <thead>
-                    <tr>
-                      <th className="sdv-table__primary-col">E-mail setting</th>
-                      <th className="sdv-table__numeric-col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Send me critical e-mails regarding my accounts</td>
-                      <td className="sdv-table__numeric-col">
-                        <div className="sdv-field-switch-wrap--suggestion v3">
-                          <input
-                            type="checkbox"
-                            aria-label=""
-                            id="sdv-F4DS56AF4AS56"
-                          />
-                          <label htmlFor="sdv-F4DS56AF4AS56"></label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Send me e-mail regarding new SEB products and services
-                      </td>
-                      <td className="sdv-table__numeric-col">
-                        <div className="sdv-field-switch-wrap--suggestion v3">
-                          <input
-                            type="checkbox"
-                            aria-label=""
-                            id="sdv-F4D5SA5F6SDA"
-                          />
-                          <label htmlFor="sdv-F4D5SA5F6SDA"></label>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                </div>
             </div>
           </div>
         </div>
