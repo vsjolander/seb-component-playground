@@ -277,6 +277,7 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate }) => {
           const buttonDate = new Date(state.browsingDate);
           buttonDate.setDate(index + 1);
           const buttonDateString = buttonDate.toISOString();
+          
         return <DateButton
                   key={`flat-button-${index}`}
                   active={isActiveDate(buttonDateString)}
@@ -284,7 +285,11 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate }) => {
                   onClick={() => {
                     dispatch({type: SELECT_DATE, payload: buttonDateString})
                   }}
-                  disabled={isSunday(buttonDate)}
+                  disabled={(() => {
+                    if(isEqual(buttonDate, state.selectedDate)) return false;  
+                    if(isSunday(buttonDate)) return true;  
+                    return (buttonDate.getDate() === 10)
+                  })()}
                 >
                     {index + 1}
                 </DateButton>
