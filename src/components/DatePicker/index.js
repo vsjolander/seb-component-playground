@@ -300,7 +300,6 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate }) => {
     <DatePickerModalContainer>
       <DatePickerModalHeader toggleIsOpen={toggleIsOpen} />
       <DatePickerModalBody>
-        <div className="sdv-datepicker">
           <div className="sdv-datepicker__controls">
             <FlatButton onClick={() => dispatch({type: PREVIOUS_MONTH})}>
               <IconLeft width="32" height="32" fill="#0092e1" />
@@ -352,7 +351,6 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate }) => {
             {renderDays()}
             {renderNextMonthDays()}
           </DatepickerCalendarGrid>
-        </div>
       </DatePickerModalBody>
       {showFooter && <DatepickerModalFooter />}
     </DatePickerModalContainer>

@@ -12,6 +12,9 @@ export const DatePickerModalContainer = styled.div`
   border: 1px solid #0092e1;
   overflow: hidden;
   min-width: 18.75em;
+  position: absolute;
+  box-shadow: 0 2px 6px 0px rgba(0,0,0,.15);
+  background-color: #ffffff;
 
   @media (max-width: 767px) {
     min-width: 100%;
@@ -35,6 +38,10 @@ export const DatePickerModalHeaderContainer = styled.div`
   font-size: 1.5rem;
   font-weight: 500;
   border-bottom: 1px solid ${(props) => props.theme.colors.grey[200]};
+
+  @media (min-width: 576px) {
+    display: none;
+  }
 `;
 
 export const DatePickerModalFooterContainer = styled.div`
@@ -48,6 +55,7 @@ export const DatePickerModalFooterContainer = styled.div`
 
 export const DatePickerModalBody = styled.div`
   display: flex;
+  flex-direction: column;
   padding: 0.5rem 0;
   height: calc(100% - 6.5rem);
 `;
@@ -96,6 +104,10 @@ export const DatepickerCalendarGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   padding: 0 1rem;
+  
+  @media (min-width: 576px) {
+    padding: 0 .25rem;
+  }
 ;`
 
 export const WeekdayContainer = styled.div`
@@ -110,4 +122,8 @@ export const DatePickerMonthLabel = styled.div`
   padding: .5rem 1rem;
   font-size: .75rem;
   margin-bottom: .25rem;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
 `
