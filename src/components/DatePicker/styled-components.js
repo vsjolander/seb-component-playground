@@ -78,16 +78,17 @@ export const DateButtonWrapper = styled(FlatButton)`
   align-items: center;
   position: relative;
   font-weight: ${props => {
-    if(props.adjecentMonth) return 400;
+    //if(props.adjecentMonth) return 400;
     return 500
   }};
   color: ${props => {
-    if(props.disabled) return '#B3B3B3'
-    if(props.active) return '#FFFFFF'
+    if(props.adjecentMonth) return props.theme.colors.darkblue1;
+    if(props.disabled) return '#B3B3B3';
+    if(props.active) return '#FFFFFF';
     return '#444444'
   }};
   background: ${props => {
-    if(props.adjecentMonth ) return props.theme.colors.grey[100]
+    if(props.disabled ) return props.theme.colors.grey[100]
     if(props.active) return props.theme.colors.darkblue1
     return '#FFFFFF';
   }};
