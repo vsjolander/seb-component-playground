@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {HashRouter as Router, Switch, Route} from 'react-router-dom'
 import {ThemeProvider} from 'styled-components'
 import theme from './theme'
 import "./App.scss";
@@ -10,7 +10,7 @@ import ViewDatePicker from './components/DatePicker'
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      <Router basename='/'>
         <SideNav>
         <Switch>
           <Route path="/slide-toggle">
