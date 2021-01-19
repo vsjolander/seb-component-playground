@@ -15,6 +15,7 @@ export const DatePickerModalContainer = styled.div`
   position: absolute;
   box-shadow: 0 2px 6px 0px rgba(0,0,0,.15);
   background-color: #ffffff;
+  z-index: 1001;
 
   @media (max-width: 767px) {
     min-width: 100%;
@@ -76,14 +77,17 @@ export const DateButtonWrapper = styled(FlatButton)`
   justify-content: center;
   align-items: center;
   position: relative;
-  font-weight: 500;
+  font-weight: ${props => {
+    if(props.adjecentMonth) return 400;
+    return 500
+  }};
   color: ${props => {
-    if(props.disabled || props.adjecentMonth) return '#B3B3B3'
+    if(props.disabled) return '#B3B3B3'
     if(props.active) return '#FFFFFF'
     return '#444444'
   }};
   background: ${props => {
-    if(props.disabled) return props.theme.colors.grey[100]
+    if(props.adjecentMonth ) return props.theme.colors.grey[100]
     if(props.active) return props.theme.colors.darkblue1
     return '#FFFFFF';
   }};
@@ -126,4 +130,17 @@ export const DatePickerMonthLabel = styled.div`
   @media (min-width: 576px) {
     display: none;
   }
+`
+
+export const DatePickerOverlay = styled.div`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity .4s cubic-bezier(.25,.8,.25,1);
+    opacity: 0;
 `

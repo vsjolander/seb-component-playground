@@ -25,22 +25,24 @@ import {
   DatepickerCalendarGrid,
   DatePickerMonthLabel,
   WeekdayContainer,
+  DatePickerOverlay
 } from "./styled-components";
 import { useReducer } from "react";
+import { Fragment } from "react";
 
 const months = [
-  { value: "01", label: "Jan" },
-  { value: "02", label: "Feb" },
-  { value: "03", label: "Mar" },
-  { value: "04", label: "Apr" },
+  { value: "01", label: "January" },
+  { value: "02", label: "Febuary" },
+  { value: "03", label: "Mars" },
+  { value: "04", label: "April" },
   { value: "05", label: "May" },
-  { value: "06", label: "Jun" },
-  { value: "07", label: "Jul" },
-  { value: "08", label: "Aug" },
-  { value: "09", label: "Sep" },
-  { value: "10", label: "Oct" },
-  { value: "11", label: "Nov" },
-  { value: "12", label: "Dec" },
+  { value: "06", label: "June" },
+  { value: "07", label: "Juli" },
+  { value: "08", label: "August" },
+  { value: "09", label: "September" },
+  { value: "10", label: "October" },
+  { value: "11", label: "November" },
+  { value: "12", label: "December" },
 ];
 
 const years = [
@@ -308,7 +310,7 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate }) => {
               list={months}
               selectedValue={{
                 value: format(new Date(state.browsingDate), "MM"),
-                label: format(new Date(state.browsingDate), "MMM"),
+                label: format(new Date(state.browsingDate), "MMMM"),
               }}
               onChange={(value) => {
                 dispatch({
@@ -379,10 +381,13 @@ const DatePicker = () => {
         onClick={() => toggleIsOpen()}
       />
       {isOpen && (
-        <DatePickerModal
-          toggleIsOpen={toggleIsOpen}
-          selectedDate={selectedDate}
-        />
+        <Fragment>
+          <DatePickerOverlay />
+          <DatePickerModal
+            toggleIsOpen={toggleIsOpen}
+            selectedDate={selectedDate}
+          />
+        </Fragment>
       )}
     </div>
   );
