@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useState, useRef} from 'react';
 import {
     format,
     getDaysInMonth,
@@ -7,14 +7,14 @@ import {
     addMonths,
     subMonths,
   } from "date-fns";
-import { Dropdown } from "@sebgroup/react-components/dist/Dropdown";
 import {
     DatePickerModalContainer,
     DatePickerModalBody,
     FlatButton,
     DatepickerCalendarGrid,
     DateButtonPlaceholder,
-    WeekdayContainer
+    WeekdayContainer,
+    DatePickerSelect
   } from "./styled-components";
   import DateButton from './DateButton'
   import DatePickerModalHeader from './DatePickerModalHeader'
@@ -24,7 +24,7 @@ import {
 
   const months = [
     { value: "01", label: "January" },
-    { value: "02", label: "Febuary" },
+    { value: "02", label: "February" },
     { value: "03", label: "Mars" },
     { value: "04", label: "April" },
     { value: "05", label: "May" },
@@ -59,6 +59,10 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate, modalPosition, state, dis
     const daysInMonth = getDaysInMonth(new Date(state.browsingDate));
   
     const isActiveDate = (dateIsoString) => isEqual(new Date(dateIsoString), new Date(state.selectedDate));
+
+    const [activeTooltipIndex, setActiveTooltipIndex] = useState(null);
+
+    const toolTipTimeout = useRef()
   
     const renderPreviousMonthDays = () => {
       let previousDaysArray;
@@ -107,8 +111,13 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate, modalPosition, state, dis
                     key={`flat-button-${index}`}
                     active={isActiveDate(buttonDateString)}
                     date={buttonDateString}
+                    activeTooltip={activeTooltipIndex === index}
+                    index={index}
+                    setActiveTooltipIndex={setActiveTooltipIndex}
+                    toolTipTimeout={toolTipTimeout}
                     onClick={() => {
                       dispatch({type: SELECT_DATE, payload: buttonDateString})
+                      setActiveTooltipIndex(null)
                     }}
                     disabled={(() => {
                       if(isEqual(buttonDate, state.selectedDate)) return false;  
@@ -129,32 +138,24 @@ const DatePickerModal = ({ toggleIsOpen, selectedDate, modalPosition, state, dis
               <FlatButton onClick={() => dispatch({type: PREVIOUS_MONTH})}>
                 <IconLeft width="18" height="18" fill="#000000" />
               </FlatButton>
-              <Dropdown
-                list={months}
-                selectedValue={{
-                  value: format(new Date(state.browsingDate), "MM"),
-                  label: format(new Date(state.browsingDate), "MMMM"),
-                }}
-                onChange={(value) => {
+              <DatePickerSelect value={format(new Date(state.browsingDate), "MM")}
+                onChange={(event) => {
+                  console.log(event.target.value)
                   dispatch({
                     type: "SET_MONTH",
-                    payload: parseInt(value.value) - 1,
+                    payload: parseInt(event.target.value) - 1,
                   });
-                }}
-              />
-              <Dropdown
-                list={years}
-                selectedValue={{
-                  value: format(new Date(state.browsingDate), "yyyy"),
-                  label: format(new Date(state.browsingDate), "yyyy"),
-                }}
-                onChange={(value) => {
+                }}>
+                {months.map(month => <option key={month.value} value={month.value}>{month.label}</option>)}
+              </DatePickerSelect>
+              <DatePickerSelect onChange={(event) => {
                   dispatch({
                     type: "SET_YEAR",
-                    payload: parseInt(value.value),
+                    payload: parseInt(event.target.value),
                   });
-                }}
-              />
+                }}>
+                {years.map(year => <option key={year.value} value={year.value}>{year.label}</option>)}
+              </DatePickerSelect>
               <FlatButton onClick={() => dispatch({type: NEXT_MONTH})} >
                 <IconRight width="18" height="18" fill="#000000" />
               </FlatButton>

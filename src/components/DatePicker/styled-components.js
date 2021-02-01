@@ -200,3 +200,7 @@ export const DatePickerOverlay = styled.div`
 export const DatePickerFooterButton = styled.button`
   background: #fff;
 `;
+
+export const DatePickerSelect = styled.select`
+  
+`;
