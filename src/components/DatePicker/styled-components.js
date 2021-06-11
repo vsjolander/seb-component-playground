@@ -10,7 +10,6 @@ const ModalEnterAnimation = keyframes`
 export const DatePickerModalContainer = styled.div`
   border-radius: 0.25em;
   min-width: 18.75em;
-  width: 300px;
   position: absolute;
   box-shadow: 0 2px 6px 0px rgba(0,0,0,.15);
   background-color: #ffffff;
@@ -81,15 +80,22 @@ export const DatePickerModalFooterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 3rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem .25rem;
   border-top: 1px solid ${(props) => props.theme.colors.grey[200]};
 `;
 
 export const DatePickerModalBody = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 0.5rem 0;
   height: calc(100% - 6.5rem);
+`;
+
+export const DatePickerModalBodyContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
 `;
 
 export const FlatButton = styled.button`
@@ -106,6 +112,11 @@ export const FlatButton = styled.button`
     outline: none;
     box-shadow: 0 0 4px 1px ${props => props.theme.colors.blue};
     z-index: 1;
+  }
+
+  .sdv-datepicker__controls & {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `;
 
@@ -140,6 +151,12 @@ export const DateButtonWrapper = styled(FlatButton)`
     if(props.active) return '#000000'
     return '#FFFFFF';
   }};
+
+  &:hover {
+    background: ${ props => {
+      if( !props.disabled && !props.active ) return props.theme.colors.grey[100]
+    }};
+  }
 `
 
 export const DateButtonContent = styled.div`
@@ -168,7 +185,7 @@ export const DatepickerCalendarGrid = styled.div`
 export const WeekdayContainer = styled.div`
   text-align: center;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 400;
   padding: .5rem 0;
 `
 
@@ -202,5 +219,15 @@ export const DatePickerFooterButton = styled.button`
 `;
 
 export const DatePickerSelect = styled.select`
-  
+  border: 1px solid transparent;
+  height: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &:focus {
+    border: 1px solid ${props => props.theme.colors.darkblue2};
+    outline: none;
+    box-shadow: 0 0 4px 1px ${props => props.theme.colors.blue};
+    z-index: 1;
+  }
 `;

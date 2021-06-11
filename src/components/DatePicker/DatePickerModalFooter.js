@@ -1,10 +1,12 @@
 import React from 'react';
-import {DatePickerModalFooterContainer} from './styled-components'
+import { SET_TODAY } from './consts'; 
+import {DatePickerModalFooterContainer, FlatButton} from './styled-components'
 
-const DatePickerModalFooter = ({ toggleIsOpen }) => {
+const DatePickerModalFooter = ({ dispatch }) => {
   return (
     <DatePickerModalFooterContainer>
-
+      <div className="btn btn-link" onClick={() => {dispatch({type: "SET_TODAY"})}}>Today</div>
+      <div className="btn btn-link">Other Action</div>
     </DatePickerModalFooterContainer>
   );
 };
