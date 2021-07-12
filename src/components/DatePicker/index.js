@@ -5,11 +5,11 @@ import { DatePickerOverlay } from "./styled-components";
 import DatePickerInputField from "./DatePickerInputField";
 import DatePickerModal from "./DatePickerModal";
 import moment from 'moment';
-
-import Picker from 'rc-picker';
-import 'rc-picker/assets/index.css';
 import calendarReducer from "./reducer";
-import generateConfig from './dateConfig'
+import RcDatePicker from "./RcDatePicker";
+import RcRangePicker from "./RcRangePicker";
+
+
 
 const modalRoot = document.getElementById("modal-root");
 
@@ -27,11 +27,12 @@ const DatePicker = (props) => {
   const [state, dispatch] = useReducer(calendarReducer, initialState);
   const { footer, range } = props.config || false;
 
-  console.log(config);
-  console.log(range);
-
   const toggleIsOpen = () => {
     setIsOpen((state) => !state);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -49,6 +50,7 @@ const DatePicker = (props) => {
             <DatePickerModal
               modalPosition={modalPosition}
               toggleIsOpen={toggleIsOpen}
+              closeModal={closeModal}
               state={state}
               dispatch={dispatch}
               footer={footer}
@@ -70,28 +72,9 @@ const config = {
   }
 };
 
-const defaultValue = moment('2019-11-28 01:02:03');
 
 const ViewDatePicker = () => {
 
-  const [value, setValue] = React.useState(defaultValue);
-  const weekRef = React.useRef(null);
-
-  const onSelect = (newValue) => {
-    console.log('Select:', newValue);
-  };
-
-  const onChange = (newValue, formatString) => {
-    console.log('Change:', newValue, formatString);
-    setValue(newValue);
-  };
-
-  const sharedProps = {
-    generateConfig,
-    value,
-    onSelect,
-    onChange,
-  };
 
   return (
   <Fragment>
@@ -103,7 +86,14 @@ const ViewDatePicker = () => {
       </div>
       <div className="row">
         <div className="col-12 col-md-4 col-lg-3">
-          <Picker {...sharedProps} />
+          <label className="sdv-field-label">Default V2</label>
+          <RcDatePicker />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-md-4 col-lg-3">
+          <label className="sdv-field-label">Range V2</label>
+          <RcRangePicker />
         </div>
       </div>
       <div className="row">

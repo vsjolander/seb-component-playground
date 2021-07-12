@@ -57,6 +57,7 @@ const getPreviousMonthDays = (dateString) => {
 
 const DatePickerModal = ({
   toggleIsOpen,
+  closeModal,
   selectedDate,
   modalPosition,
   state,
@@ -109,7 +110,7 @@ const DatePickerModal = ({
       const buttonDate = addMonths(new Date(state.browsingDate), 1);
       const date = index + 1;
       buttonDate.setDate(date);
-      return <DateButtonPlaceholder />;
+      return <DateButtonPlaceholder key={index} />;
     });
   };
 
@@ -145,9 +146,9 @@ const DatePickerModal = ({
   };
 
   return (
-    <FocusTrap focusTrapOptions={{clickOutsideDeactivates: true, onDeactivate: toggleIsOpen}}>
+    <FocusTrap focusTrapOptions={{clickOutsideDeactivates: true, onDeactivate: closeModal}}>
       <DatePickerModalContainer modalPosition={modalPosition}>
-        <DatePickerModalHeader toggleIsOpen={toggleIsOpen} />
+        <DatePickerModalHeader closeModal={closeModal} />
         <DatePickerModalBody>
           <DatePickerModalBodyContent>
           <div className="sdv-datepicker__controls">

@@ -1,0 +1,62 @@
+.rc-picker.rc-picker-range {
+  display: flex;
+  align-items: center;
+
+  &:not(.rc-picker-focused) {
+    .rc-picker-input input:hover {
+      border-color: transparent;
+    }
+  }
+
+  &.rc-picker-focused {
+
+    input, .rc-picker-suffix, input:active {
+      border-color: #007ac7;
+    }
+
+    .rc-picker-input.rc-picker-input-active input {
+      box-shadow: 0 0 4px 2px rgba(0,122,199,.2);
+      border: 1px solid #007ac7;
+      transition: box-shadow 250ms;
+    }
+
+    .rc-picker-suffix {
+      background-color: #0092E1;
+
+      svg, path, rect, use {
+        fill: #fff;
+      }
+    }
+  }
+
+  @include vanilla-text-field();
+
+  height: 1.5rem;
+  padding: 0;
+  justify-content: space-between;
+
+  .rc-picker-input {
+    height: 100%;
+
+    input {
+      height: 100%;
+      margin: 0;
+      padding: 0.5rem;
+      background: transparent;
+      border: 1px solid transparent;
+      outline: none;
+      border-radius: .2rem;
+
+      &:hover {
+        border-color: transparent;
+      }
+    }
+  }
+
+  .rc-picker-suffix {
+    border: none;
+    border-left: 0.0625em solid #cecece;
+    border-top-right-radius: .2rem;
+    border-bottom-right-radius: .2rem;
+  }
+}

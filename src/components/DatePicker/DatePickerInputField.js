@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { format } from "date-fns";
 const DatePickerInputField = (props) => {
-  console.log(props.state);
   const inputElement = useRef(null);
 
   return (

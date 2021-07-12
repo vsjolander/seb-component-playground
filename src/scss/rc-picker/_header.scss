@@ -1,0 +1,39 @@
+.rc-picker-header-super-next-btn, .rc-picker-header-super-prev-btn {
+  display: none;
+}
+
+.rc-picker-header {
+  display: flex;
+  width: 100%;
+
+  & > button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  button {
+    background: #fff;
+    border: none;
+    padding: 0;
+    border-radius: .25rem;
+    transition: background 150ms ease-in-out;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .rc-picker-header-view button {
+    padding: .25rem .5rem;
+  }
+}
+
+.rc-picker-header-view {
+  margin: auto;
+}
+
+.rc-picker-header-view, .rc-picker-header-view button {
+  height: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}

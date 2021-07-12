@@ -1,0 +1,55 @@
+.rc-picker-panel {
+  border: 1px solid transparent;
+  padding: .5rem;
+
+  th {
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: .5rem 0;
+  }
+}
+
+.rc-picker-panel.rc-picker-panel-focused {
+  box-shadow: 0 0 4px 2px rgba(0,122,199,.2);
+  transition: box-shadow 250ms;
+  border:1px solid #007ac7;
+}
+
+.rc-picker-panels .rc-picker-panel.rc-picker-panel-focused {
+  box-shadow: none;
+}
+
+.rc-picker-panels .rc-picker-panel:first-of-type {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.rc-picker-panels .rc-picker-panel:last-of-type {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.rc-picker-panel-container, .rc-picker-panel, .rc-picker-content {
+  width: 100%;
+}
+
+.rc-picker-panels {
+  display: flex;
+}
+
+.rc-picker-panels, .rc-picker-panel {
+  border-radius: 4px;
+}
+
+.rc-picker-panels .rc-picker-panel {
+  background: #fff;
+}
+
+.rc-picker-panels .rc-picker-panel:last-child {
+  border-left: none;
+}
+
+.rc-picker-panels .rc-picker-panel:first-child {
+  border-right: none;
+}

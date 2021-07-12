@@ -5,10 +5,7 @@
 @import '~@sebgroup/vanilla/src/components/datepicker/datepicker';
 @import '~@sebgroup/vanilla/src/components/inputs/input_base';
 @import '~@sebgroup/vanilla/src/components/inputs/input-mixins';
-
-.my-field-class {
-  @include vanilla-text-field();
-}
+@import './scss/index.scss';
 
 .sdv-field-switch-wrap {
   @include vanilla-field-toggle-wrap("switch");

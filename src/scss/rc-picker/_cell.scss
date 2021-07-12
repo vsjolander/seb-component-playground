@@ -1,0 +1,41 @@
+
+.rc-picker-cell {
+  cursor: pointer;
+}
+
+.rc-picker-cell.rc-picker-cell-selected .rc-picker-cell-inner {
+  background: #000;
+  color: #fff;
+}
+
+.rc-picker-cell-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: .875rem;
+  padding: .5rem;
+  visibility: hidden;
+}
+
+.rc-picker-cell-in-view .rc-picker-cell-inner {
+  visibility: visible;
+}
+
+
+.rc-picker-cell-disabled.rc-picker-cell-in-view  {
+  color: #B3B3B3;
+  background: #f8f8f8;
+}
+
+.rc-picker-month-panel, .rc-picker-year-panel, .rc-picker-decade-panel {
+  .rc-picker-cell-inner {
+    width: 80px;
+  }
+}
+
+.rc-picker-decade-panel {
+  .rc-picker-cell-inner {
+    width: 100px;
+  }
+}
